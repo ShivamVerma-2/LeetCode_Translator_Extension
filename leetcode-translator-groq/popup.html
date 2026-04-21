@@ -2,243 +2,294 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LeetCode Translator</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       width: 320px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 14px;
-      background: #ffffff;
-      color: #1a1a1a;
+      background: #1c1c1c;
+      color: #f0f0f0;
     }
 
+    /* ---- header ---- */
     .header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 16px 12px;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 11px;
+      padding: 15px 16px 13px;
+      background: #181818;
+      border-bottom: 1px solid #2a2a2a;
     }
 
     .logo {
-      width: 32px;
-      height: 32px;
-      background: #f89f1b;
-      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      background: #00e676;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
       font-size: 12px;
-      color: white;
+      font-weight: 800;
+      color: #111;
       flex-shrink: 0;
     }
 
-    .header-text h1 {
+    .header h1 {
       font-size: 14px;
-      font-weight: 600;
-      color: #1a1a1a;
+      font-weight: 700;
+      color: #f0f0f0;
     }
 
-    .header-text p {
+    .header p {
       font-size: 11px;
-      color: #888;
-      margin-top: 1px;
+      color: #8F8E8D;
+      margin-top: 2px;
     }
 
+    /* ---- section ---- */
     .section {
       padding: 14px 16px;
     }
 
-    .section + .section {
-      border-top: 1px solid #f0f0f0;
-      padding-top: 12px;
-    }
-
-    .label {
-      font-size: 11px;
+    .section-label {
+      font-size: 10px;
       font-weight: 600;
-      color: #888;
+      letter-spacing: 0.9px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      color: #8F8E8D;
       margin-bottom: 10px;
     }
 
+    /* ---- language grid ---- */
     .lang-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
     }
 
     .lang-btn {
-      padding: 7px 4px;
-      border: 1.5px solid #e8e8e8;
-      border-radius: 8px;
-      background: #fafafa;
+      padding: 9px 5px;
+      background: #222222;
+      border: 1px solid #2e2e2e;
+      border-radius: 9px;
       cursor: pointer;
       text-align: center;
-      transition: all 0.15s ease;
-      outline: none;
+      transition: border-color 0.15s, background 0.15s;
     }
 
     .lang-btn:hover {
-      border-color: #f89f1b;
-      background: #fffbf2;
+      border-color: #00c95e;
+      background: #1a2e22;
     }
 
     .lang-btn.active {
-      border-color: #f89f1b;
-      background: #fff8ed;
+      border-color: #00e676;
+      background: #162b1e;
     }
 
     .lang-btn .lang-name {
+      display: block;
       font-size: 12px;
       font-weight: 600;
-      color: #1a1a1a;
-      display: block;
+      color: #d0d0d0;
     }
 
     .lang-btn.active .lang-name {
-      color: #b85f00;
+      color: #00e676;
     }
 
     .lang-btn .lang-native {
-      font-size: 10px;
-      color: #aaa;
       display: block;
-      margin-top: 1px;
+      font-size: 10px;
+      color: #8F8E8D;
+      margin-top: 2px;
     }
 
     .lang-btn.active .lang-native {
-      color: #d47800;
+      color: #009e52;
     }
 
-    .api-key-row {
-      display: flex;
-      gap: 6px;
+    /* ---- divider ---- */
+    .divider {
+      height: 1px;
+      background: #242424;
+      margin: 0 16px;
     }
 
-    input[type="password"],
-    input[type="text"] {
-      flex: 1;
-      padding: 7px 10px;
-      border: 1.5px solid #e8e8e8;
-      border-radius: 8px;
-      font-size: 12px;
-      color: #1a1a1a;
-      background: #fafafa;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    input:focus {
-      border-color: #f89f1b;
-      background: #fff;
-    }
-
-    .save-btn {
-      padding: 7px 12px;
-      background: #f89f1b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: opacity 0.15s;
-    }
-
-    .save-btn:hover { opacity: 0.88; }
-
+    /* ---- translate button ---- */
     .translate-btn {
       width: 100%;
-      padding: 11px;
-      background: #f89f1b;
-      color: white;
+      padding: 11px 0;
+      background: #00e676;
+      color: #0d0d0d;
       border: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
       cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
+      transition: opacity 0.12s, transform 0.1s;
+      letter-spacing: 0.1px;
     }
 
-    .translate-btn:hover { opacity: 0.9; }
-    .translate-btn:active { transform: scale(0.98); }
-    .translate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .translate-btn:hover {
+      opacity: 0.9;
+    }
 
+    .translate-btn:active {
+      transform: scale(0.98);
+    }
+
+    .translate-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* spinner inside button */
     .spinner {
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(255,255,255,0.35);
-      border-top-color: white;
+      width: 13px;
+      height: 13px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #0d0d0d;
       border-radius: 50%;
-      animation: spin 0.65s linear infinite;
+      animation: spin 0.6s linear infinite;
       flex-shrink: 0;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
-    .status-bar {
-      padding: 8px 16px;
+    /* ---- api key row ---- */
+    .api-row {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .api-input {
+      flex: 1;
+      padding: 8px 10px;
+      background: #222222;
+      border: 1px solid #2e2e2e;
+      border-radius: 8px;
       font-size: 12px;
-      min-height: 32px;
+      color: #8F8E8D;
+      outline: none;
+      transition: border-color 0.15s;
+      font-family: monospace;
+    }
+
+    .api-input:focus {
+      border-color: #00e676;
+      color: #d0d0d0;
+    }
+
+    .save-btn {
+      padding: 8px 13px;
+      background: transparent;
+      border: 1px solid #00e676;
+      color: #00e676;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.12s;
+      white-space: nowrap;
+    }
+
+    .save-btn:hover {
+      background: #162b1e;
+    }
+
+    /* ---- status bar ---- */
+    .status-bar {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: #fafafa;
-      border-top: 1px solid #f0f0f0;
+      gap: 7px;
+      padding: 8px 16px;
+      background: #161616;
+      border-top: 1px solid #242424;
+      min-height: 32px;
     }
 
     .status-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
-    .status-dot.green  { background: #22c55e; }
-    .status-dot.orange { background: #f89f1b; }
-    .status-dot.red    { background: #ef4444; }
-    .status-dot.gray   { background: #ccc; }
+    .dot-green  { background: #00e676; }
+    .dot-orange { background: #ffaa00; }
+    .dot-red    { background: #ff5252; }
+    .dot-grey   { background: #8F8E8D; }
 
-    .status-text { color: #666; }
-
-    .not-leetcode {
-      padding: 20px 16px;
-      text-align: center;
-      color: #aaa;
-      font-size: 13px;
-      line-height: 1.6;
+    .status-text {
+      font-size: 11px;
+      color: #8F8E8D;
     }
 
-    .not-leetcode strong { display: block; color: #555; font-size: 14px; margin-bottom: 6px; }
+    /* ---- not on leetcode screen ---- */
+    .not-lc {
+      padding: 26px 18px;
+      text-align: center;
+    }
+
+    .not-lc .icon {
+      width: 40px;
+      height: 40px;
+      background: #222;
+      border-radius: 10px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .not-lc strong {
+      display: block;
+      font-size: 13px;
+      color: #d0d0d0;
+      margin-bottom: 5px;
+    }
+
+    .not-lc span {
+      font-size: 12px;
+      color: #8F8E8D;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
 
   <div class="header">
     <div class="logo">LC</div>
-    <div class="header-text">
+    <div>
       <h1>LeetCode Translator</h1>
       <p>Translate problems in one click</p>
     </div>
   </div>
 
-  <div id="main-content">
+  <div id="main-ui">
 
-    <div class="section" id="lang-section">
-      <div class="label">Choose language</div>
+    <div class="section">
+      <div class="section-label">Choose language</div>
       <div class="lang-grid" id="langGrid"></div>
     </div>
+
+    <div class="divider"></div>
 
     <div class="section">
       <button class="translate-btn" id="translateBtn">
@@ -246,23 +297,30 @@
       </button>
     </div>
 
-    <div class="section" style="padding-top:10px;padding-bottom:10px;">
-      <div class="label" style="margin-bottom:8px;">API key</div>
-      <div class="api-key-row">
-        <input type="password" id="apiKeyInput" placeholder="gsk_..." />
+    <div class="divider"></div>
+
+    <div class="section" style="padding-top:12px; padding-bottom:12px;">
+      <div class="section-label" style="margin-bottom:8px;">API key</div>
+      <div class="api-row">
+        <input type="password" class="api-input" id="apiKeyInput" placeholder="gsk_..." />
         <button class="save-btn" id="saveKeyBtn">Save</button>
       </div>
     </div>
 
   </div>
 
-  <div id="not-leetcode" class="not-leetcode" style="display:none;">
+  <div id="not-lc-screen" class="not-lc" style="display:none;">
+    <div class="icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2L2 7v11h6v-5h4v5h6V7L10 2z" stroke="#8F8E8D" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
     <strong>Open a LeetCode problem</strong>
-    Navigate to a problem page on leetcode.com to use the translator.
+    <span>Navigate to a problem page on<br>leetcode.com to start translating.</span>
   </div>
 
   <div class="status-bar">
-    <div class="status-dot gray" id="statusDot"></div>
+    <div class="status-dot dot-grey" id="statusDot"></div>
     <span class="status-text" id="statusText">Ready</span>
   </div>
 
