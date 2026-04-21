@@ -10,15 +10,23 @@ Powered by **Groq's free API** (LLaMA 3.3 70B). No subscription needed.
 
 **Pin the extension to your toolbar**
 
-![Extension pinned to Chrome toolbar](screenshots/01-extension-pinned.png)
+![Extension pinned to Chrome toolbar]
+
+<img width="785" height="556" alt="01-extension-pinned" src="https://github.com/user-attachments/assets/d7134a72-ffdd-49a7-bd38-07368b37a251" />
+
 
 **Pick your language and hit translate**
 
-![Popup UI with language selection](screenshots/02-popup.png)
+![Popup UI with language selection]
+
+<img width="616" height="631" alt="02-popup" src="https://github.com/user-attachments/assets/986848bb-a26f-484f-96d0-4db5caaa6555" />
+
 
 **Translation appears directly on the LeetCode page**
 
-![Floating translation panel on LeetCode](screenshots/03-translation-panel.png)
+![Floating translation panel on LeetCode]
+<img width="609" height="737" alt="03-translation-panel" src="https://github.com/user-attachments/assets/715acb77-dbb1-4ea7-951f-c401362c4f14" />
+
 
 ---
 
